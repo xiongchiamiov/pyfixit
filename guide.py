@@ -1,19 +1,13 @@
 # -*- coding: utf-8 -*-
 import requests
 
+from base import Base
 from category import Category
 from constants import API_BASE_URL
 
-class Guide(object):
+class Guide(Base):
    def __init__(self, guideid):
       self.id = guideid
-      
-   def __getattr__(self, name):
-      self.refresh()
-      try:
-         return self.__dict__[name]
-      except KeyError:
-         raise AttributeError("'Guide' object has no attribute '%s'" % name)
    
    def refresh(self):
       response = requests.get('%s/guides/%s' % (API_BASE_URL, self.id))

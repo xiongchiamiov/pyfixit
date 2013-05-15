@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import requests
 
+from base import Base
 from constants import API_BASE_URL
 
-class Category(object):
+class Category(Base):
    def __init__(self, name):
       self.name = name
    
@@ -12,13 +13,6 @@ class Category(object):
    
    def __repr__(self):
       return '<Category %s>' % self.name
-
-   def __getattr__(self, name):
-      self.refresh()
-      try:
-         return self.__dict__[name]
-      except KeyError:
-         raise AttributeError("'Category' object has no attribute '%s'" % name)
    
    def refresh(self):
       response = requests.get('%s/categories/%s' % (API_BASE_URL, self.name))
