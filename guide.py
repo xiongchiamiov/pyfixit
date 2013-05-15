@@ -2,8 +2,7 @@
 import requests
 
 from category import Category
-
-API_BASE_URL = 'https://www.ifixit.com/api/1.1'
+from constants import API_BASE_URL
 
 class Guide(object):
    def __init__(self, guideid):
