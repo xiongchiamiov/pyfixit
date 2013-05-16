@@ -4,6 +4,7 @@ import requests
 from base import Base
 from category import Category
 from constants import API_BASE_URL
+from step import Step
 
 class Guide(Base):
    def __init__(self, guideid):
@@ -32,7 +33,7 @@ class Guide(Base):
       author = guide['author']
       #self.author = User(author['userid'], name=author['text'])
       #self.timeRequired = guide['timeRequired']
-      #self.steps = guide['steps']
+      self.steps = [Step(step['guideid'], step['stepid'], data=step) for step in guide['steps']]
       self.type = guide['type']
       self.public = guide['public']
       self.revision = guide['revisionid']

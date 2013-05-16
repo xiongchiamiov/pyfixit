@@ -2,6 +2,7 @@
 from unittest import TestCase
 
 from guide import Guide
+from step import Step
 
 class GuideTest(TestCase):
    @classmethod
@@ -26,6 +27,27 @@ class GuideTest(TestCase):
    
    def test_subject(self):
       self.assertEqual('Processor', self.wallstreet.subject)
+   
+   def test_steps(self):
+      steps = [
+         Step(1, 1),
+         Step(1, 2),
+         Step(1, 3),
+         Step(1, 4),
+         Step(1, 5),
+         Step(1, 6),
+         Step(2, 7),
+         Step(2, 8),
+         Step(3, 9),
+         Step(3, 10),
+         Step(3, 11),
+         Step(5, 14),
+      ]
+      # We test for deep equality in StepTest.
+      self.assertEqual(len(steps), len(self.wallstreet.steps))
+      for (s1, s2) in zip(steps, self.wallstreet.steps):
+         self.assertEqual(s1.guideid, s2.guideid)
+         self.assertEqual(s1.stepid, s2.stepid)
    
    def test_type(self):
       self.assertEqual('installation', self.wallstreet.type)
