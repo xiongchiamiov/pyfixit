@@ -3,6 +3,7 @@ import requests
 
 from base import Base
 from constants import API_BASE_URL
+from line import Line
 
 class Step(Base):
    def __init__(self, guideid, stepid, data=None):
@@ -34,4 +35,6 @@ class Step(Base):
       self.orderby = data['orderby']
       self.revision = data['revisionid']
       self.title = data['title']
+      self.lines = [Line(self.guideid, self.stepid, line['lineid'], data=line)
+                    for line in data['lines']]
 

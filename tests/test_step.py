@@ -2,6 +2,7 @@
 from re import match
 from unittest import TestCase
 
+from line import Line
 from step import Step
 
 class StepTest(TestCase):
@@ -86,4 +87,20 @@ class StepTest(TestCase):
    def test_title(self):
       self.assertEqual('', self.fetched.title)
       self.assertEqual('', self.fed.title)
+   
+   def test_lines(self):
+      lines = [
+         Line(5, 14, 23),
+         Line(5, 14, 24),
+         Line(5, 14, 25),
+         Line(5, 14, 26),
+      ]
+      # We test for deep equality in LineTest.
+      self.assertEqual(len(lines), len(self.fetched.lines))
+      self.assertEqual(len(lines), len(self.fed.lines))
+      for (l1, l2) in zip(lines, self.fetched.lines) \
+                    + zip(lines, self.fed.lines):
+         self.assertEqual(l1.guideid, l2.guideid)
+         self.assertEqual(l1.stepid, l2.stepid)
+         self.assertEqual(l1.lineid, l2.lineid)
 
