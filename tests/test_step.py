@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from re import match
 from unittest import TestCase
 
 from step import Step
@@ -7,6 +8,7 @@ class StepTest(TestCase):
    @classmethod
    def setUpClass(cls):
       cls.fetched = Step(5, 14)
+      cls.fetchedWrong = Step(1, 14)
       data = {
          "guideid": 5,
          "lines": [
@@ -59,6 +61,19 @@ class StepTest(TestCase):
          "title": ""
       }
       cls.fed = Step(5, 14, data)
+      cls.fedWrong = Step(1, 14, data)
+   
+   def test_fetching(self):
+      # assertRaisesRegexp was introduced in 2.7/3.1, and renamed in 3.2.  I'd
+      # like to support at least 2.6, though, so let's do it manually.
+      with self.assertRaises(Exception) as contextManager:
+         self.fetchedWrong.notAnAttribute
+      self.assertTrue(match(r'Step with id \d+ not found in guide \d+.',
+                            contextManager.exception.message))
+      with self.assertRaises(Exception) as contextManager:
+         self.fedWrong.notAnAttribute
+      self.assertTrue(match(r'Step with id \d+ not found in guide \d+.',
+                            contextManager.exception.message))
    
    def test_orderby(self):
       self.assertEqual(1, self.fetched.orderby)
