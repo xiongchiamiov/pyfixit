@@ -12,9 +12,13 @@ class CategoryTest(TestCase):
       self.assertEqual('PowerBook G3 Wallstreet', self.wallstreet.name)
    
    def test_categories(self):
-      self.assertEqual(
-         [Category('PowerBook G3 Series')],
-         self.wallstreet.categories)
+      categories = [Category('PowerBook G3 Series')]
+      
+      # We don't care about deep equality, so let's just check the length and
+      # the names of the categories.
+      self.assertEqual(len(categories), len(self.wallstreet.categories))
+      for (c1, c2) in zip(categories, self.wallstreet.categories):
+         self.assertEqual(c1.name, c2.name)
    
    def test_description(self):
       self.assertEqual(
