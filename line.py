@@ -3,6 +3,7 @@ import requests
 
 from base import Base
 from constants import API_BASE_URL
+from wikitext import WikiText
 
 class Line(Base):
    def __init__(self, guideid, stepid, lineid, data=None):
@@ -36,6 +37,6 @@ class Line(Base):
       '''
       self.bullet = data['bullet']
       self.level = data['level']
-      #self.text = WikiText(guide['text_raw'],
-      #                     guide['text_rendered'])
+      self.text = WikiText(data['text_raw'],
+                           data['text_rendered'])
 

@@ -27,5 +27,10 @@ class LineTest(TestCase):
       self.assertEqual(0, self.fed.level)
    
    def test_text(self):
-      pass
+      self.assertEqual(
+         "Use a spudger, the tips of your fingers, or a flat non-metal tool to pry up the processor's right side.",
+         str(self.fetched.text))
+      self.assertEqual(
+         "Use a spudger, the tips of your fingers, or a flat non-metal tool to pry up the processor's right side.",
+         str(self.fed.text))
 
