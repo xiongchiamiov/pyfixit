@@ -42,4 +42,41 @@ class Guide(Base):
       #                     guide['prereq_modified_date']
       #self.summary = guide['summary']
       #self.flags = guide['flags']
+
+   @staticmethod
+   def all(guideids=None, filter=None, order=None):
+      '''
+      all(iterable, string, string) -> iterable
+      
+      Returns a generator of Guide objects from the list of all guides.
+      
+      guideids: Only return Guides corresponding to these ids.
+      filter:   Only return guides of this type.  Choices: installation,
+                repair, disassembly, teardown, technique, maintenance.
+      order:    Instead of ordering by guideid, order alphabetically.  Choices:
+                ASC, DESC.
+      '''
+      parameters = []
+      if guideids:
+         parameters.append('guideids=%s' % ','.join(map(str, guideids)))
+      if filter:
+         parameters.append('filter=%s' % filter)
+      if order:
+         parameters.append('order=%s' % order)
+      parameters = '&'.join(parameters)
+      
+      offset = 0
+      limit = 5 # Tune this to balance memory vs. frequent network trips.
+      guideJSONs = []
+      while True:
+         if not guideJSONs:
+            url = '%s/guides?offset=%s&limit=%s&%s' \
+                  % (API_BASE_URL, offset, limit, parameters)
+            response = requests.get(url)
+            guideJSONs = response.json()
+            # Are we at the end of pagination?
+            if not guideJSONs:
+               return
+            offset += limit
+         yield Guide(guideJSONs.pop(0)['guideid'])
    
