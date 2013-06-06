@@ -29,5 +29,5 @@ class CategoryTest(TestCase):
       self.assertEqual('en', self.wallstreet.locale)
    
    def test_title(self):
-      self.assertEqual('PowerBook G3 Wallstreet', self.wallstreet.title)
+      self.assertEqual('PowerBook G3 Wallstreet Repair', self.wallstreet.title)
 
