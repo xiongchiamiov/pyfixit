@@ -32,11 +32,10 @@ class Image(Base):
       #self.srcid = attributes['srcid']
       
       image = attributes['image']
-      self.original = image['original']
-      self.mini = image['mini']
-      self.thumbnail = image['thumbnail']
-      self.standard = image['standard']
-      self.medium = image['medium']
-      self.large = image['large']
-      self.huge = image['huge']
+      # Images are allowed to have different sizes, depending on the dimensions
+      # of the original image.  To avoid doing a bunch of explicit 'in' checks,
+      # splat the variables into scope.
+      del(image['id'])
+      for size in image:
+         vars(self)[size] = image[size]
 

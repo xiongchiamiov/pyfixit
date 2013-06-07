@@ -38,4 +38,7 @@ class ImageTest(TestCase):
    
    def test_huge(self):
       self.assertEqual(self.baseImage + '.huge', self.stack.huge)
+      noHuge = Image(74895)
+      with self.assertRaises(AttributeError):
+         noHuge.huge
    
