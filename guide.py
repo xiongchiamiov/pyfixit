@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import requests
+from datetime import datetime
 
 from base import Base
 from category import Category
@@ -33,6 +34,8 @@ class Guide(Base):
       #self.parts = guide['parts']
       self.subject = guide['subject']
       #self.modifiedDate = guide['modified_date']
+      self.createdDate = datetime.utcfromtimestamp(guide['created_date'])
+      self.publishedDate = datetime.utcfromtimestamp(guide['published_date'])
       #self.documents = guide['documents']
       author = guide['author']
       #self.author = User(author['userid'], name=author['text'])
