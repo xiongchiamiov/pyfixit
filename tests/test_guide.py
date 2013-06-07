@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from datetime import datetime
 from unittest import TestCase
 
 from guide import Guide
@@ -32,6 +33,16 @@ class GuideTest(TestCase):
    
    def test_subject(self):
       self.assertEqual('Processor', self.wallstreet.subject)
+   
+   def test_created_date(self):
+      self.assertEqual(
+         datetime(2009, 06, 04, 06, 52, 12),
+         self.wallstreet.createdDate)
+   
+   def test_published_date(self):
+      self.assertEqual(
+         datetime(2009, 06, 04, 06, 52, 12),
+         self.wallstreet.publishedDate)
    
    def test_steps(self):
       steps = [
