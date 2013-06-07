@@ -20,7 +20,10 @@ class Guide(Base):
       
       guide = attributes['guide']
       self.title = guide['title']
-      self.image = Image(guide['image']['id'])
+      if guide['image']:
+         self.image = Image(guide['image']['id'])
+      else:
+         self.image = None
       self.locale = guide['locale']
       #self.introduction = WikiText(guide['introduction_raw'],
       #                             guide['introduction_rendered'])
