@@ -2,6 +2,7 @@
 from unittest import TestCase
 
 from guide import Guide
+from image import Image
 from step import Step
 
 class GuideTest(TestCase):
@@ -21,6 +22,9 @@ class GuideTest(TestCase):
       self.assertEqual(
          'Installing PowerBook G3 Wallstreet Processor',
          self.wallstreet.title)
+   
+   def test_image(self):
+      self.assertEqual(Image(14), self.wallstreet.image)
    
    def test_locale(self):
       self.assertEqual('en', self.wallstreet.locale)

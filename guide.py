@@ -4,6 +4,7 @@ import requests
 from base import Base
 from category import Category
 from constants import API_BASE_URL
+from image import Image
 from step import Step
 
 class Guide(Base):
@@ -19,7 +20,7 @@ class Guide(Base):
       
       guide = attributes['guide']
       self.title = guide['title']
-      #self.image = guide['image']
+      self.image = Image(guide['image']['id'])
       self.locale = guide['locale']
       #self.introduction = WikiText(guide['introduction_raw'],
       #                             guide['introduction_rendered'])

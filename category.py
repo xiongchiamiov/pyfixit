@@ -3,6 +3,7 @@ import requests
 
 from base import Base
 from constants import API_BASE_URL
+from image import Image
 
 class Category(Base):
    def __init__(self, name):
@@ -24,7 +25,7 @@ class Category(Base):
       self.description = attributes['description']
       #self.flags = attributes['flags']
       #self.guides = attributes['guides']
-      #self.image = attributes['image']
+      self.image = Image(attributes['image']['id'])
       self.locale = attributes['locale']
       #self.parts = attributes['parts']
       #self.solutions = attributes['solutions']
