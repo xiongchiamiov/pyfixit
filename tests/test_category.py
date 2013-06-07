@@ -2,6 +2,7 @@
 from unittest import TestCase
 
 from category import Category
+from image import Image
 
 class CategoryTest(TestCase):
    @classmethod
@@ -24,6 +25,9 @@ class CategoryTest(TestCase):
       self.assertEqual(
          'Model M4753 / 233, 250, 266, 292, or 300 MHz G3 processor',
          self.wallstreet.description)
+   
+   def test_image(self):
+      self.assertEqual(Image(10301), self.wallstreet.image)
    
    def test_locale(self):
       self.assertEqual('en', self.wallstreet.locale)
