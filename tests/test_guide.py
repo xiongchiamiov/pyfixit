@@ -26,7 +26,9 @@ class GuideTest(TestCase):
    
    def test_image(self):
       self.assertEqual(Image(14), self.wallstreet.image)
-      self.assertEqual(Guide(14729).image, None)
+      # Guides without main images tend to get deleted or image-ified quickly,
+      # so it's hard to have a working test.
+      #self.assertEqual(Guide(14729).image, None)
    
    def test_locale(self):
       self.assertEqual('en', self.wallstreet.locale)
