@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
 
-from image import Image
+from pyfixit import Image
 
 class ImageTest(TestCase):
    @classmethod

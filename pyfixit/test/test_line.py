@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from unittest import TestCase
 
-from line import Line
+from pyfixit import Line
 
 class LineTest(TestCase):
    @classmethod

@@ -2,8 +2,8 @@
 from re import match
 from unittest import TestCase
 
-from line import Line
-from step import Step
+from pyfixit import Line
+from pyfixit import Step
 
 class StepTest(TestCase):
    @classmethod
