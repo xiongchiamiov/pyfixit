@@ -19,7 +19,7 @@ class Category(Base):
       response = requests.get('%s/categories/%s' % (API_BASE_URL, self.name))
       attributes = response.json()
       
-      self.categories = [Category(name) for name in attributes['categories']]
+      self.ancestors = [Category(name) for name in attributes['ancestors']]
       #self.contents = WikiText(attributes['contents_raw'],
       #                         attributes['contents_rendered'])
       self.description = attributes['description']
@@ -29,7 +29,7 @@ class Category(Base):
       self.locale = attributes['locale']
       #self.parts = attributes['parts']
       #self.solutions = attributes['solutions']
-      self.title = attributes['title']
+      self.title = attributes['display_title']
       #self.tools = attributes['tools']
       #self.topic_info = attributes['topic_info']
 

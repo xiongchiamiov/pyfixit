@@ -21,7 +21,7 @@ class Step(Base):
       response = requests.get('%s/guides/%s' % (API_BASE_URL, self.guideid))
       attributes = response.json()
       
-      for step in attributes['guide']['steps']:
+      for step in attributes['steps']:
          if step['stepid'] == self.stepid:
             self._update(step)
             return

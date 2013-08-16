@@ -22,7 +22,7 @@ class Line(Base):
       response = requests.get('%s/guides/%s' % (API_BASE_URL, self.guideid))
       attributes = response.json()
       
-      for step in attributes['guide']['steps']:
+      for step in attributes['steps']:
          if step['stepid'] == self.stepid:
             for line in step['lines']:
                if line['lineid'] == self.lineid:

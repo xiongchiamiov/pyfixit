@@ -19,36 +19,35 @@ class Guide(Base):
       self.category = Category(attributes['category'])
       self.url = attributes['url']
       
-      guide = attributes['guide']
-      self.title = guide['title']
-      if guide['image']:
-         self.image = Image(guide['image']['id'])
+      self.title = attributes['title']
+      if attributes['image']:
+         self.image = Image(attributes['image']['id'])
       else:
          self.image = None
-      self.locale = guide['locale']
-      #self.introduction = WikiText(guide['introduction_raw'],
-      #                             guide['introduction_rendered'])
-      #self.conclusion = WikiText(guide['conclusion_raw'],
-      #                           guide['conclusion_rendered'])
-      #self.tools = guide['tools']
-      #self.parts = guide['parts']
-      self.subject = guide['subject']
-      #self.modifiedDate = guide['modified_date']
-      self.createdDate = datetime.utcfromtimestamp(guide['created_date'])
-      self.publishedDate = datetime.utcfromtimestamp(guide['published_date'])
-      #self.documents = guide['documents']
-      author = guide['author']
+      self.locale = attributes['locale']
+      #self.introduction = WikiText(attributes['introduction_raw'],
+      #                             attributes['introduction_rendered'])
+      #self.conclusion = WikiText(attributes['conclusion_raw'],
+      #                           attributes['conclusion_rendered'])
+      #self.tools = attributes['tools']
+      #self.parts = attributes['parts']
+      self.subject = attributes['subject']
+      #self.modifiedDate = attributes['modified_date']
+      self.createdDate = datetime.utcfromtimestamp(attributes['created_date'])
+      self.publishedDate = datetime.utcfromtimestamp(attributes['published_date'])
+      #self.documents = attributes['documents']
+      author = attributes['author']
       #self.author = User(author['userid'], name=author['text'])
-      #self.timeRequired = guide['timeRequired']
-      self.steps = [Step(step['guideid'], step['stepid'], data=step) for step in guide['steps']]
-      self.type = guide['type']
-      self.public = guide['public']
-      self.revision = guide['revisionid']
-      self.difficulty = guide['difficulty']
-      #self.prerequisites = guide['prerequisites'],
-      #                     guide['prereq_modified_date']
-      #self.summary = guide['summary']
-      #self.flags = guide['flags']
+      #self.timeRequired = attributes['timeRequired']
+      self.steps = [Step(step['guideid'], step['stepid'], data=step) for step in attributes['steps']]
+      self.type = attributes['type']
+      self.public = attributes['public']
+      self.revision = attributes['revisionid']
+      self.difficulty = attributes['difficulty']
+      #self.prerequisites = attributes['prerequisites'],
+      #                     attributes['prereq_modified_date']
+      #self.summary = attributes['summary']
+      #self.flags = attributes['flags']
 
    @staticmethod
    def all(guideids=None, filter=None, order=None):
