@@ -91,16 +91,27 @@
 <dd><p>Bases: <a class="reference internal" href="#pyfixit.base.Base" title="pyfixit.base.Base"><tt class="xref py py-class docutils literal"><span class="pre">pyfixit.base.Base</span></tt></a></p>
 <dl class="staticmethod">
 <dt id="pyfixit.guide.Guide.all">
-<em class="property">static </em><tt class="descname">all</tt><big>(</big><em>iterable</em>, <em>string</em>, <em>string</em><big>)</big> &rarr; iterable<a class="reference internal" href="_modules/pyfixit/guide.html#Guide.all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyfixit.guide.Guide.all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a generator of Guide objects from the list of all guides.</p>
-<p>guideids: Only return Guides corresponding to these ids.
-filter:   Only return guides of this type.  Choices: installation,</p>
-<blockquote>
-<div>repair, disassembly, teardown, technique, maintenance.</div></blockquote>
-<dl class="docutils">
-<dt>order:    Instead of ordering by guideid, order alphabetically.  Choices:</dt>
-<dd>ASC, DESC.</dd>
-</dl>
+<em class="property">static </em><tt class="descname">all</tt><big>(</big><em>guideids=None</em>, <em>filter=None</em>, <em>order=None</em><big>)</big><a class="reference internal" href="_modules/pyfixit/guide.html#Guide.all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyfixit.guide.Guide.all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetch all guides.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>guideids</strong> (<em>iterable</em>) &#8211; Only return Guides corresponding to these ids.</li>
+<li><strong>filter</strong> (<em>string</em>) &#8211; Only return guides of this type.  Choices:
+installation, repair, disassembly, teardown,
+technique, maintenance.</li>
+<li><strong>order</strong> (<em>string</em>) &#8211; Instead of ordering by guideid, order alphabetically.
+Choices: ASC, DESC.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">generator of <a class="reference internal" href="#pyfixit.guide.Guide" title="pyfixit.guide.Guide"><tt class="xref py py-class docutils literal"><span class="pre">pyfixit.guide.Guide</span></tt></a> objects.</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
