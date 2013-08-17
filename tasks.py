@@ -6,5 +6,5 @@ def test():
 
 @task
 def doc():
-   run('sphinx-apidoc -F -o docs pyfixit')
+   run('cd docs && make html')
 
