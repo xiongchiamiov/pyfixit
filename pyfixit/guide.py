@@ -52,15 +52,15 @@ class Guide(Base):
    @staticmethod
    def all(guideids=None, filter=None, order=None):
       '''
-      all(iterable, string, string) -> iterable
+      Fetch all guides.
       
-      Returns a generator of Guide objects from the list of all guides.
-      
-      guideids: Only return Guides corresponding to these ids.
-      filter:   Only return guides of this type.  Choices: installation,
-                repair, disassembly, teardown, technique, maintenance.
-      order:    Instead of ordering by guideid, order alphabetically.  Choices:
-                ASC, DESC.
+      :param iterable guideids: Only return Guides corresponding to these ids.
+      :param string filter: Only return guides of this type.  Choices:
+                            installation, repair, disassembly, teardown,
+                            technique, maintenance.
+      :param string order: Instead of ordering by guideid, order alphabetically.
+                           Choices: ASC, DESC.
+      :rtype: generator of :class:`pyfixit.guide.Guide` objects.
       '''
       parameters = []
       if guideids:
