@@ -4,9 +4,8 @@ A Python library wrapping [the iFixit API].
 
 # Status
 
-Working, but incomplete, and completely lacking in documentation.  You probably
-don't want to use this yet, but if you do, let me know so I can throw up a few
-helpful things.
+Working, but incomplete, and almost completely lacking in documentation.  You
+probably don't want to use this yet.
 
 # Hacking
 
