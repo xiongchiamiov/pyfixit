@@ -9,10 +9,42 @@ from image import Image
 from step import Step
 
 class Guide(Base):
+   '''A series of instructions for performing a task.
+   
+   :var int id: The identifying id for the guide. Ex: ``5``.
+   :var Category category: *(Lazy)* The :class:`pyfixit.category.Category` to
+                           which this guide belongs.
+   :var string url: *(Lazy)* The canonical URL for viewing this guide.
+   :var string title: *(Lazy)* The display title of the guide.
+   :var Image image: *(Lazy)* The primary :class:`pyfixit.image.Image`
+                     associated with the guide.
+   :var string locale: *(Lazy)* The locale of the text displayed through the
+                       guide.
+   :var string subject: *(Lazy)* The thing the guide's user is operating on.
+                        Ex: ``Processor``.
+   :var datetime createdDate: *(Lazy)* When the guide was created.
+   :var datetime publishedDate: *(Lazy)* When the guide was first made
+                                publicly-viewable.
+   :var iterable steps: *(Lazy)* An ordered list of :class:`pyfixit.step.Step`
+                        objects representing the steps to follow.
+   :var string type: *(Lazy)* The sort of guide. Ex: ``installation``.
+   :var boolean public: *(Lazy)* Whether everyone can view the guide. If a
+                        guide is not public, only the author and administrative
+                        users can view it.
+   :var int revision: *(Lazy)* The revisionid associated with this version of
+                      the step in the database, suitable for determining
+                      equality of objects not modified after being pulled from
+                      the API. Ex: ``42928``.
+   :var string difficulty: *(Lazy)* An estimate of the difficulty of the guide.
+                           Choices: Very easy, Easy, Moderate, Difficult, Very
+                           difficult.
+   '''
    def __init__(self, guideid):
       self.id = guideid
    
    def refresh(self):
+      '''Refetch instance data from the API.
+      '''
       response = requests.get('%s/guides/%s' % (API_BASE_URL, self.id))
       attributes = response.json()
       

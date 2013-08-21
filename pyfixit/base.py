@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
 class Base(object):
+   '''Base object defining common behavior for all API objects.
+   
+   Objects inheriting from this class should implement a ``refresh()`` method
+   that fetches any data it has been waiting to lazily-load.
+   '''
    def __getattr__(self, name):
       self.refresh()
       try:

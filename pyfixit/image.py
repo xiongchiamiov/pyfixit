@@ -5,6 +5,22 @@ from base import Base
 from constants import API_BASE_URL
 
 class Image(Base):
+   '''An image that has been uploaded to the site.
+   
+   :var int id: The id of this image. Ex: ``26674``.
+   :var int height: *(Lazy)* Height in pixels. Ex: ``1200``.
+   :var int width: *(Lazy)* Width in pixels. Ex: ``1600``.
+   :var string original: *(Lazy, Optional)* URL to the originally-uploaded
+                         image.
+   :var string mini: *(Lazy, Optional)* URL to the mini size of the image.
+   :var string thumbnail: *(Lazy, Optional)* URL to the thumbnail size of the
+                          image.
+   :var string standard: *(Lazy, Optional)* URL to the standard size of the
+                         image.
+   :var string medium: *(Lazy, Optional)* URL to the medium size of the image.
+   :var string large: *(Lazy, Optional)* URL to the large size of the image.
+   :var string huge: *(Lazy, Optional)* URL to the huge size of the image.
+   '''
    def __init__(self, id):
       self.id = id
    
@@ -21,6 +37,8 @@ class Image(Base):
       return self.id == other.id
    
    def refresh(self):
+      '''Refetch instance data from the API.
+      '''
       response = requests.get('%s/media/images/%s' % (API_BASE_URL, self.id))
       attributes = response.json()
       
