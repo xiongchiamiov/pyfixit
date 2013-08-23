@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="pyfixit 0.1.0a documentation" href="#" />
-    <link rel="next" title="PyFixit User Guide" href="user_guide.html" />
+    <link rel="next" title="User Guide" href="user_guide.html" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -44,7 +44,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="user_guide.html" title="PyFixit User Guide"
+          <a href="user_guide.html" title="User Guide"
              accesskey="N">next</a> |</li>
         <li><a href="#">pyfixit 0.1.0a documentation</a> &raquo;</li> 
       </ul>
@@ -57,10 +57,24 @@
             
   <div class="section" id="welcome-to-pyfixit-s-documentation">
 <h1>Welcome to pyfixit&#8217;s documentation!<a class="headerlink" href="#welcome-to-pyfixit-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
+<p><a class="reference external" href="http://www.ifixit.com/">iFixit</a> has tons of cool information on how to repair stuff.  Now you can
+access all of that goodness as easy-to-use Python objects.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyfixit</span> <span class="kn">import</span> <span class="n">Guide</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span> <span class="o">=</span> <span class="n">Guide</span><span class="p">(</span><span class="mi">13682</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">thumbnail</span>
+<span class="go">u&#39;https://d3nevzfk7ii3be.cloudfront.net/igi/rJxj4HJ4tKBqvcvW.thumbnail&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">guide</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">lines</span><span class="p">:</span>
+<span class="gp">... </span>      <span class="k">print</span> <span class="s">&#39;(</span><span class="si">%s</span><span class="s">) </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">bullet</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">(icon_reminder) Before we begin, we want to make it clear [snip]</span>
+<span class="go">(black) While not much is known in terms of tech specs, [snip]</span>
+<span class="go">[snip]</span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">PyFixit User Guide</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#basic-usage">Basic Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user_guide.html#example-application">Example Application</a></li>
@@ -107,7 +121,7 @@
 
   <h4>Next topic</h4>
   <p class="topless"><a href="user_guide.html"
-                        title="next chapter">PyFixit User Guide</a></p>
+                        title="next chapter">User Guide</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -135,7 +149,7 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="user_guide.html" title="PyFixit User Guide"
+          <a href="user_guide.html" title="User Guide"
              >next</a> |</li>
         <li><a href="#">pyfixit 0.1.0a documentation</a> &raquo;</li> 
       </ul>
