@@ -65,10 +65,42 @@
 <span class="kn">from</span> <span class="nn">step</span> <span class="kn">import</span> <span class="n">Step</span>
 
 <div class="viewcode-block" id="Guide"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.guide.Guide">[docs]</a><span class="k">class</span> <span class="nc">Guide</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+   <span class="sd">&#39;&#39;&#39;A series of instructions for performing a task.</span>
+<span class="sd">   </span>
+<span class="sd">   :var int id: The identifying id for the guide. Ex: ``5``.</span>
+<span class="sd">   :var Category category: *(Lazy)* The :class:`pyfixit.category.Category` to</span>
+<span class="sd">                           which this guide belongs.</span>
+<span class="sd">   :var string url: *(Lazy)* The canonical URL for viewing this guide.</span>
+<span class="sd">   :var string title: *(Lazy)* The display title of the guide.</span>
+<span class="sd">   :var Image image: *(Lazy)* The primary :class:`pyfixit.image.Image`</span>
+<span class="sd">                     associated with the guide.</span>
+<span class="sd">   :var string locale: *(Lazy)* The locale of the text displayed through the</span>
+<span class="sd">                       guide.</span>
+<span class="sd">   :var string subject: *(Lazy)* The thing the guide&#39;s user is operating on.</span>
+<span class="sd">                        Ex: ``Processor``.</span>
+<span class="sd">   :var datetime createdDate: *(Lazy)* When the guide was created.</span>
+<span class="sd">   :var datetime publishedDate: *(Lazy)* When the guide was first made</span>
+<span class="sd">                                publicly-viewable.</span>
+<span class="sd">   :var iterable steps: *(Lazy)* An ordered list of :class:`pyfixit.step.Step`</span>
+<span class="sd">                        objects representing the steps to follow.</span>
+<span class="sd">   :var string type: *(Lazy)* The sort of guide. Ex: ``installation``.</span>
+<span class="sd">   :var boolean public: *(Lazy)* Whether everyone can view the guide. If a</span>
+<span class="sd">                        guide is not public, only the author and administrative</span>
+<span class="sd">                        users can view it.</span>
+<span class="sd">   :var int revision: *(Lazy)* The revisionid associated with this version of</span>
+<span class="sd">                      the step in the database, suitable for determining</span>
+<span class="sd">                      equality of objects not modified after being pulled from</span>
+<span class="sd">                      the API. Ex: ``42928``.</span>
+<span class="sd">   :var string difficulty: *(Lazy)* An estimate of the difficulty of the guide.</span>
+<span class="sd">                           Choices: Very easy, Easy, Moderate, Difficult, Very</span>
+<span class="sd">                           difficult.</span>
+<span class="sd">   &#39;&#39;&#39;</span>
    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guideid</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">guideid</span>
    
 <div class="viewcode-block" id="Guide.refresh"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.guide.Guide.refresh">[docs]</a>   <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="sd">&#39;&#39;&#39;Refetch instance data from the API.</span>
+<span class="sd">      &#39;&#39;&#39;</span>
       <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/guides/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">API_BASE_URL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
       <span class="n">attributes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
       
@@ -181,7 +213,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013 James Pearson.
-      Last updated on 2013-08-21.
+      Last updated on 2013-08-22.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

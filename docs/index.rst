@@ -9,7 +9,7 @@ Welcome to pyfixit's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
 
    pyfixit
 

@@ -57,6 +57,11 @@
 <span class="c"># -*- coding: utf-8 -*-</span>
 
 <div class="viewcode-block" id="WikiText"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.wikitext.WikiText">[docs]</a><span class="k">class</span> <span class="nc">WikiText</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;A bit of marked-up text.</span>
+<span class="sd">   </span>
+<span class="sd">   :var string raw: The text including markup. Ex: ``&#39;&#39;&#39;bold&#39;&#39;&#39;``.</span>
+<span class="sd">   :var string rendered: The rendered text. Ex: ``&lt;strong&gt;bold&lt;/strong&gt;``.</span>
+<span class="sd">   &quot;&quot;&quot;</span>
    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">raw</span><span class="p">,</span> <span class="n">rendered</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">raw</span> <span class="o">=</span> <span class="n">raw</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">rendered</span> <span class="o">=</span> <span class="n">rendered</span>
@@ -105,7 +110,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013 James Pearson.
-      Last updated on 2013-08-21.
+      Last updated on 2013-08-22.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

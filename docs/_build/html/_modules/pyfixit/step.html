@@ -62,6 +62,23 @@
 <span class="kn">from</span> <span class="nn">line</span> <span class="kn">import</span> <span class="n">Line</span>
 
 <div class="viewcode-block" id="Step"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.step.Step">[docs]</a><span class="k">class</span> <span class="nc">Step</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+   <span class="sd">&#39;&#39;&#39;One step in a guide.</span>
+<span class="sd">   </span>
+<span class="sd">   :var int guideid: The id of the :class:`pyfixit.guide.Guide` owning this</span>
+<span class="sd">                     step. Ex: ``5``.</span>
+<span class="sd">   :var int stepid: This step&#39;s id. Ex: ``14``.</span>
+<span class="sd">   :var int orderby: This step&#39;s location in its guide relative to the other</span>
+<span class="sd">                     steps. Lower numbers come first. Counting starts at 0 and</span>
+<span class="sd">                     should not duplicate or skip over any natural numbers. Ex:</span>
+<span class="sd">                     ``0``.</span>
+<span class="sd">   :var int revision: The revisionid associated with this version of the step</span>
+<span class="sd">                      in the database, suitable for determining equality of</span>
+<span class="sd">                      objects not modified after being pulled from the API. Ex:</span>
+<span class="sd">                      ``33880``.</span>
+<span class="sd">   :var string title: The title of this step. May be an empty string.</span>
+<span class="sd">   :var iterable lines: An iterable of the :class:`pyfixit.line.Line` objects</span>
+<span class="sd">                        composing this step.</span>
+<span class="sd">   &#39;&#39;&#39;</span>
    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guideid</span><span class="p">,</span> <span class="n">stepid</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">guideid</span> <span class="o">=</span> <span class="n">guideid</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">stepid</span> <span class="o">=</span> <span class="n">stepid</span>
@@ -72,6 +89,8 @@
          <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
       
 <div class="viewcode-block" id="Step.refresh"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.step.Step.refresh">[docs]</a>   <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="sd">&#39;&#39;&#39;Refetch instance data from the API.</span>
+<span class="sd">      &#39;&#39;&#39;</span>
       <span class="c"># There&#39;s no GET endpoint for steps, so get the parent guide and loop</span>
       <span class="c"># through its steps until we find the right one.</span>
       <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/guides/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">API_BASE_URL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">guideid</span><span class="p">))</span>
@@ -85,8 +104,8 @@
                       <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stepid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">guideid</span><span class="p">))</span>
    </div>
    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-      <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">      Update the step using the blob of json-parsed data directly from the API.</span>
+      <span class="sd">&#39;&#39;&#39;Update the step using the blob of json-parsed data directly from the</span>
+<span class="sd">      API.</span>
 <span class="sd">      &#39;&#39;&#39;</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">orderby</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;orderby&#39;</span><span class="p">]</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">revision</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">&#39;revisionid&#39;</span><span class="p">]</span>
@@ -132,7 +151,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013 James Pearson.
-      Last updated on 2013-08-21.
+      Last updated on 2013-08-22.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

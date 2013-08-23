@@ -62,6 +62,22 @@
 <span class="kn">from</span> <span class="nn">image</span> <span class="kn">import</span> <span class="n">Image</span>
 
 <div class="viewcode-block" id="Category"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.category.Category">[docs]</a><span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+   <span class="sd">&#39;&#39;&#39;A category of guides, answers, wiki pages, etc.  Often takes the form of</span>
+<span class="sd">   a device.</span>
+<span class="sd">   </span>
+<span class="sd">   :var string name: The identifying name of the category. Ex: ``Powerbook G3</span>
+<span class="sd">                     Wallstreet``.</span>
+<span class="sd">   :var iterable ancestors: *(Lazy)* An ordered list of</span>
+<span class="sd">                            :class:`pyfixit.category.Category` objects. The</span>
+<span class="sd">                            first is this category&#39;s parent, followed by its</span>
+<span class="sd">                            grandparent, up until the root category.</span>
+<span class="sd">   :var string description: *(Lazy)* A short description of the category.</span>
+<span class="sd">   :var Image image: *(Lazy)* The primary :class:`pyfixit.image.Image`</span>
+<span class="sd">                     associated with the category.</span>
+<span class="sd">   :var string locale: *(Lazy)* The locale of the text throughout the category.</span>
+<span class="sd">   :var string title: *(Lazy)* The display title (which is alterable, unlike</span>
+<span class="sd">                      the identifying name).</span>
+<span class="sd">   &#39;&#39;&#39;</span>
    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
    
@@ -72,6 +88,8 @@
       <span class="k">return</span> <span class="s">&#39;&lt;Category </span><span class="si">%s</span><span class="s">&gt;&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
    
 <div class="viewcode-block" id="Category.refresh"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.category.Category.refresh">[docs]</a>   <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="sd">&#39;&#39;&#39;Refetch instance data from the API.</span>
+<span class="sd">      &#39;&#39;&#39;</span>
       <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/categories/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">API_BASE_URL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
       <span class="n">attributes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
       
@@ -127,7 +145,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013 James Pearson.
-      Last updated on 2013-08-21.
+      Last updated on 2013-08-22.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>

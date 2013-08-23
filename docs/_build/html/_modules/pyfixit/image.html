@@ -61,6 +61,22 @@
 <span class="kn">from</span> <span class="nn">constants</span> <span class="kn">import</span> <span class="n">API_BASE_URL</span>
 
 <div class="viewcode-block" id="Image"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.image.Image">[docs]</a><span class="k">class</span> <span class="nc">Image</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+   <span class="sd">&#39;&#39;&#39;An image that has been uploaded to the site.</span>
+<span class="sd">   </span>
+<span class="sd">   :var int id: The id of this image. Ex: ``26674``.</span>
+<span class="sd">   :var int height: *(Lazy)* Height in pixels. Ex: ``1200``.</span>
+<span class="sd">   :var int width: *(Lazy)* Width in pixels. Ex: ``1600``.</span>
+<span class="sd">   :var string original: *(Lazy, Optional)* URL to the originally-uploaded</span>
+<span class="sd">                         image.</span>
+<span class="sd">   :var string mini: *(Lazy, Optional)* URL to the mini size of the image.</span>
+<span class="sd">   :var string thumbnail: *(Lazy, Optional)* URL to the thumbnail size of the</span>
+<span class="sd">                          image.</span>
+<span class="sd">   :var string standard: *(Lazy, Optional)* URL to the standard size of the</span>
+<span class="sd">                         image.</span>
+<span class="sd">   :var string medium: *(Lazy, Optional)* URL to the medium size of the image.</span>
+<span class="sd">   :var string large: *(Lazy, Optional)* URL to the large size of the image.</span>
+<span class="sd">   :var string huge: *(Lazy, Optional)* URL to the huge size of the image.</span>
+<span class="sd">   &#39;&#39;&#39;</span>
    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
    
@@ -77,6 +93,8 @@
       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span>
    
 <div class="viewcode-block" id="Image.refresh"><a class="viewcode-back" href="../../pyfixit.html#pyfixit.image.Image.refresh">[docs]</a>   <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="sd">&#39;&#39;&#39;Refetch instance data from the API.</span>
+<span class="sd">      &#39;&#39;&#39;</span>
       <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;</span><span class="si">%s</span><span class="s">/media/images/</span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">API_BASE_URL</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
       <span class="n">attributes</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
       
@@ -133,7 +151,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2013 James Pearson.
-      Last updated on 2013-08-21.
+      Last updated on 2013-08-22.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
     </div>
   </body>
