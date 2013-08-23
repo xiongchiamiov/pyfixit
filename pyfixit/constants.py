@@ -2,6 +2,6 @@
 '''Various constants for use throughout the project.
 '''
 
-VERSION = '0.1.0a'
+VERSION = '0.1.0a1'
 API_BASE_URL = 'https://www.ifixit.com/api/2.0'
 
