@@ -4,7 +4,11 @@ User Guide
 Installation
 ------------
 
-TODO
+The easiest method is to use `pip`_::
+
+   [$]> pip install pyfixit
+
+.. _pip: http://www.pip-installer.org/en/latest/
 
 Basic Usage
 -----------
