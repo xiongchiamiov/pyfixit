@@ -8,3 +8,7 @@ def test():
 def doc():
    run('cd docs && make html')
 
+@task
+def publish():
+   run('./setup.py sdist upload')
+
