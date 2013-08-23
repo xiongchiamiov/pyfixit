@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>PyFixit User Guide &mdash; pyfixit 0.1.0a documentation</title>
+    
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0a',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyfixit 0.1.0a documentation" href="index.html" />
+    <link rel="next" title="pyfixit Package" href="pyfixit.html" />
+    <link rel="prev" title="Welcome to pyfixit’s documentation!" href="index.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head>
+  <body>
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyfixit.html" title="pyfixit Package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to pyfixit’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyfixit 0.1.0a documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="pyfixit-user-guide">
+<h1>PyFixit User Guide<a class="headerlink" href="#pyfixit-user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>TODO</p>
+</div>
+<div class="section" id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>PyFixit requires no setup; merely import the classes you want and construct
+them:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyfixit</span> <span class="kn">import</span> <span class="n">Guide</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span> <span class="o">=</span> <span class="n">Guide</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span><span class="o">.</span><span class="n">title</span>
+<span class="go">&#39;Installing PowerBook G3 Wallstreet Processor&#39;</span>
+</pre></div>
+</div>
+<p>An attempt is made to reduce the number of API calls; thus, many attributes are
+lazily-fetched on request.  To avoid this, use the <tt class="docutils literal"><span class="pre">refresh()</span></tt> method on an
+object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyfixit</span> <span class="kn">import</span> <span class="n">Guide</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span> <span class="o">=</span> <span class="n">Guide</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span><span class="o">.</span><span class="n">title</span>           <span class="c"># Triggers API call.</span>
+<span class="go">&#39;Installing PowerBook G3 Wallstreet Processor&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span><span class="o">.</span><span class="n">difficulty</span>      <span class="c"># Already in memory!</span>
+<span class="go">&#39;Easy&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span> <span class="o">=</span> <span class="n">Guide</span><span class="p">(</span><span class="mi">13682</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>      <span class="c"># Triggers API call.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">guide</span><span class="o">.</span><span class="n">title</span>          <span class="c"># Already in memory!</span>
+<span class="go">&#39;Oculus Rift Teardown&#39;</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">refresh()</span></tt> can be called at any time to fetch updates to the object.</p>
+</div>
+<div class="section" id="example-application">
+<h2>Example Application<a class="headerlink" href="#example-application" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/xiongchiamiov/ifixit-repairability-scores">ifixit-repairability-scores</a> project uses PyFixit to extract
+repairability scores from iFixit&#8217;s teardowns.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">PyFixit User Guide</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li><a class="reference internal" href="#example-application">Example Application</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to pyfixit&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pyfixit.html"
+                        title="next chapter">pyfixit Package</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="pyfixit.html" title="pyfixit Package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to pyfixit’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">pyfixit 0.1.0a documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013 James Pearson.
+      Last updated on 2013-08-22.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>
