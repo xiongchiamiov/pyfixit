@@ -2,6 +2,7 @@
 from re import match
 from unittest import TestCase
 
+from pyfixit import Image
 from pyfixit import Line
 from pyfixit import Step
 
@@ -104,3 +105,8 @@ class StepTest(TestCase):
          self.assertEqual(l1.stepid, l2.stepid)
          self.assertEqual(l1.lineid, l2.lineid)
 
+   def test_media(self):
+      # TODO: Test a step with multiple images.
+      self.assertEqual([Image(14)], self.fetched.media)
+      self.assertEqual([Image(14)], self.fed.media)
+   

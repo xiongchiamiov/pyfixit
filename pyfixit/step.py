@@ -3,6 +3,7 @@ import requests
 
 from base import Base
 from constants import API_BASE_URL
+from image import Image
 from line import Line
 
 class Step(Base):
@@ -22,6 +23,8 @@ class Step(Base):
    :var string title: The title of this step. May be an empty string.
    :var iterable lines: An iterable of the :class:`pyfixit.line.Line` objects
                         composing this step.
+   :var iterable media: *(Optional)* A list of :class:`pyfixit.image.Image`
+                        objects illustrating the step.
    '''
    def __init__(self, guideid, stepid, data=None):
       self.guideid = guideid
@@ -56,4 +59,9 @@ class Step(Base):
       self.title = data['title']
       self.lines = [Line(self.guideid, self.stepid, line['lineid'], data=line)
                     for line in data['lines']]
+      # TODO: Support video.
+      if data['media']['type'] == 'image':
+         self.media = []
+         for image in data['media']['data']:
+            self.media.append(Image(image['id']))
 
