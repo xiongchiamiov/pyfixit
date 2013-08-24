@@ -16,12 +16,12 @@ class GuideTest(TestCase):
    
    def test_url(self):
       self.assertEqual(
-         'http://www.ifixit.com/Guide/Installing+PowerBook+G3+Wallstreet+Processor/5/1',
+         'http://www.ifixit.com/Guide/Replacing+PowerBook+G3+Wallstreet+Processor/5/1',
          self.wallstreet.url)
    
    def test_title(self):
       self.assertEqual(
-         'Installing PowerBook G3 Wallstreet Processor',
+         'Replacing PowerBook G3 Wallstreet Processor',
          self.wallstreet.title)
    
    def test_image(self):
@@ -34,7 +34,7 @@ class GuideTest(TestCase):
       self.assertEqual('en', self.wallstreet.locale)
    
    def test_subject(self):
-      self.assertEqual('Processor', self.wallstreet.subject)
+      self.assertEqual('', self.wallstreet.subject)
    
    def test_created_date(self):
       self.assertEqual(
@@ -68,13 +68,13 @@ class GuideTest(TestCase):
          self.assertEqual(s1.stepid, s2.stepid)
    
    def test_type(self):
-      self.assertEqual('installation', self.wallstreet.type)
+      self.assertEqual('replacement', self.wallstreet.type)
    
    def test_public(self):
       self.assertEqual(True, self.wallstreet.public)
    
    def test_revision(self):
-      self.assertEqual(42928, self.wallstreet.revision)
+      self.assertEqual(173550, self.wallstreet.revision)
    
    def test_difficulty(self):
       self.assertEqual('Easy', self.wallstreet.difficulty)
