@@ -23,6 +23,8 @@ class Guide(Base):
                        guide.
    :var WikiText introduction: *(Lazy)* A :class:`pyfixit.wikitext.WikiText` of
                                the introductory text on the guide.
+   :var WikiText conclusion: *(Lazy)* A :class:`pyfixit.wikitext.WikiText` of
+                               the concluding text on the guide.
    :var string subject: *(Lazy)* The thing the guide's user is operating on.
                         Ex: ``Processor``.
    :var datetime createdDate: *(Lazy)* When the guide was created.
@@ -62,8 +64,8 @@ class Guide(Base):
       self.locale = attributes['locale']
       self.introduction = WikiText(attributes['introduction_raw'],
                                    attributes['introduction_rendered'])
-      #self.conclusion = WikiText(attributes['conclusion_raw'],
-      #                           attributes['conclusion_rendered'])
+      self.conclusion = WikiText(attributes['conclusion_raw'],
+                                 attributes['conclusion_rendered'])
       #self.tools = attributes['tools']
       #self.parts = attributes['parts']
       self.subject = attributes['subject']

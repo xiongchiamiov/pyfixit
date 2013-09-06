@@ -38,6 +38,11 @@ class GuideTest(TestCase):
          "The G3 processor is not soldered to the logic board, and installing a replacement is very easy.",
          str(self.wallstreet.introduction))
    
+   def test_conclusion(self):
+      self.assertEqual(
+         "To reassemble your device, follow these instructions in reverse order.",
+         str(self.wallstreet.conclusion))
+   
    def test_subject(self):
       self.assertEqual('', self.wallstreet.subject)
    
