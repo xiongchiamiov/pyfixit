@@ -4,7 +4,7 @@ A Python library wrapping [the iFixit API].
 
 # Status
 
-[![Version](https://pypip.in/v/pyfixit/badge.png)](https://crate.io/package/pyfixit)
+[![Version](https://pypip.in/v/pyfixit/badge.png)](https://crate.io/packages/pyfixit)
 
 Working, but incomplete.  Fully tested and documented.
 
