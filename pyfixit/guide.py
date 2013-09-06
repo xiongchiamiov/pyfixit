@@ -7,6 +7,7 @@ from category import Category
 from constants import API_BASE_URL
 from image import Image
 from step import Step
+from wikitext import WikiText
 
 class Guide(Base):
    '''A series of instructions for performing a task.
@@ -20,6 +21,8 @@ class Guide(Base):
                      associated with the guide.
    :var string locale: *(Lazy)* The locale of the text displayed through the
                        guide.
+   :var WikiText introduction: *(Lazy)* A :class:`pyfixit.wikitext.WikiText` of
+                               the introductory text on the guide.
    :var string subject: *(Lazy)* The thing the guide's user is operating on.
                         Ex: ``Processor``.
    :var datetime createdDate: *(Lazy)* When the guide was created.
@@ -57,8 +60,8 @@ class Guide(Base):
       else:
          self.image = None
       self.locale = attributes['locale']
-      #self.introduction = WikiText(attributes['introduction_raw'],
-      #                             attributes['introduction_rendered'])
+      self.introduction = WikiText(attributes['introduction_raw'],
+                                   attributes['introduction_rendered'])
       #self.conclusion = WikiText(attributes['conclusion_raw'],
       #                           attributes['conclusion_rendered'])
       #self.tools = attributes['tools']

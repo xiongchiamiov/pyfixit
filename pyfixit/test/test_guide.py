@@ -33,6 +33,11 @@ class GuideTest(TestCase):
    def test_locale(self):
       self.assertEqual('en', self.wallstreet.locale)
    
+   def test_introduction(self):
+      self.assertEqual(
+         "The G3 processor is not soldered to the logic board, and installing a replacement is very easy.",
+         str(self.wallstreet.introduction))
+   
    def test_subject(self):
       self.assertEqual('', self.wallstreet.subject)
    
