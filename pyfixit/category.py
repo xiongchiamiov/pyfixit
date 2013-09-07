@@ -4,6 +4,7 @@ import requests
 from base import Base
 from constants import API_BASE_URL
 from image import Image
+from wikitext import WikiText
 
 class Category(Base):
    '''A category of guides, answers, wiki pages, etc.  Often takes the form of
@@ -15,6 +16,8 @@ class Category(Base):
                             :class:`pyfixit.category.Category` objects. The
                             first is this category's parent, followed by its
                             grandparent, up until the root category.
+   :var WikiText contents: *(Lazy)* A :class:`pyfixit.wikitext.WikiText` of
+                               the text describing this category.
    :var string description: *(Lazy)* A short description of the category.
    :var Image image: *(Lazy)* The primary :class:`pyfixit.image.Image`
                      associated with the category.
@@ -38,8 +41,8 @@ class Category(Base):
       attributes = response.json()
       
       self.ancestors = [Category(name) for name in attributes['ancestors']]
-      #self.contents = WikiText(attributes['contents_raw'],
-      #                         attributes['contents_rendered'])
+      self.contents = WikiText(attributes['contents_raw'],
+                               attributes['contents_rendered'])
       self.description = attributes['description']
       #self.flags = attributes['flags']
       #self.guides = attributes['guides']
