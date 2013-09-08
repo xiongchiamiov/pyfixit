@@ -2,6 +2,7 @@
 from unittest import TestCase
 
 from pyfixit import Category
+from pyfixit import Guide
 from pyfixit import Image
 
 class CategoryTest(TestCase):
@@ -38,6 +39,32 @@ class CategoryTest(TestCase):
          'Model M4753 / 233, 250, 266, 292, or 300 MHz G3 processor',
          self.wallstreet.description)
    
+   def test_guides(self):
+      guides = [
+         Guide(9),
+         Guide(4),
+         Guide(2),
+         Guide(5),
+         Guide(6),
+         Guide(8),
+         Guide(14),
+         Guide(15),
+         Guide(1),
+         Guide(16),
+         Guide(7),
+         Guide(17),
+         Guide(12),
+         Guide(13),
+         Guide(11),
+         Guide(10),
+      ]
+      
+      # We don't care about deep equality, so let's just check the length and
+      # the ids of the guides.
+      self.assertEqual(len(guides), len(self.wallstreet.guides))
+      for (c1, c2) in zip(guides, self.wallstreet.guides):
+         self.assertEqual(c1.id, c2.id)
+
    def test_image(self):
       self.assertEqual(Image(10301), self.wallstreet.image)
    
