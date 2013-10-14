@@ -88,4 +88,17 @@ class GuideTest(TestCase):
    
    def test_difficulty(self):
       self.assertEqual('Easy', self.wallstreet.difficulty)
+   
+   def test_prerequisites(self):
+      guides = [
+         Guide(1),
+         Guide(2),
+         Guide(3),
+      ]
+      
+      # We don't care about deep equality, so let's just check the length and
+      # the ids of the guides.
+      self.assertEqual(len(guides), len(self.wallstreet.prerequisites))
+      for (g1, g2) in zip(guides, self.wallstreet.prerequisites):
+         self.assertEqual(g1.id, g2.id)
 

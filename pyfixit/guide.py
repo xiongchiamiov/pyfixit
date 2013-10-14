@@ -43,6 +43,8 @@ class Guide(Base):
    :var string difficulty: *(Lazy)* An estimate of the difficulty of the guide.
                            Choices: Very easy, Easy, Moderate, Difficult, Very
                            difficult.
+   :var iterable prerequisites: *(Lazy)* A collection of guides that must be
+                                completed prior to starting this guide.
    '''
    def __init__(self, guideid):
       self.id = guideid
@@ -81,7 +83,7 @@ class Guide(Base):
       self.public = attributes['public']
       self.revision = attributes['revisionid']
       self.difficulty = attributes['difficulty']
-      #self.prerequisites = attributes['prerequisites'],
+      self.prerequisites = [Guide(guide['guideid']) for guide in attributes['prerequisites']]
       #                     attributes['prereq_modified_date']
       #self.summary = attributes['summary']
       #self.flags = attributes['flags']
