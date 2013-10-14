@@ -27,9 +27,10 @@ class Guide(Base):
                                the concluding text on the guide.
    :var string subject: *(Lazy)* The thing the guide's user is operating on.
                         Ex: ``Processor``.
-   :var datetime createdDate: *(Lazy)* When the guide was created.
+   :var datetime modifiedDate: *(Lazy)* When the guide was last modified (UTC).
+   :var datetime createdDate: *(Lazy)* When the guide was created (UTC).
    :var datetime publishedDate: *(Lazy)* When the guide was first made
-                                publicly-viewable.
+                                publicly-viewable (UTC).
    :var iterable steps: *(Lazy)* An ordered list of :class:`pyfixit.step.Step`
                         objects representing the steps to follow.
    :var string type: *(Lazy)* The sort of guide. Ex: ``installation``.
@@ -71,7 +72,7 @@ class Guide(Base):
       #self.tools = attributes['tools']
       #self.parts = attributes['parts']
       self.subject = attributes['subject']
-      #self.modifiedDate = attributes['modified_date']
+      self.modifiedDate = datetime.utcfromtimestamp(attributes['modified_date'])
       self.createdDate = datetime.utcfromtimestamp(attributes['created_date'])
       self.publishedDate = datetime.utcfromtimestamp(attributes['published_date'])
       #self.documents = attributes['documents']

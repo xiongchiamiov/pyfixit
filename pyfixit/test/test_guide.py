@@ -46,6 +46,11 @@ class GuideTest(TestCase):
    def test_subject(self):
       self.assertEqual('', self.wallstreet.subject)
    
+   def test_modified_date(self):
+      self.assertEqual(
+         datetime(2013, 8, 22, 22, 49, 39),
+         self.wallstreet.modifiedDate)
+   
    def test_created_date(self):
       self.assertEqual(
          datetime(2009, 06, 04, 06, 52, 12),
