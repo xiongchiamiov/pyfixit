@@ -14,6 +14,11 @@ try:
 except (OSError, IOError, ImportError):
    description = ''
 
+try:
+   license = open('LICENSE').read()
+except IOError:
+   license = 'WTFPL 2.0'
+
 setup(
    name = 'pyfixit',
    version = VERSION,
@@ -21,7 +26,7 @@ setup(
    author_email = 'pearson@changedmy.name',
    packages = ['pyfixit'],
    url = 'https://github.com/xiongchiamiov/pyfixit',
-   license = open('LICENSE').read(),
+   license = license,
    description = 'A Python library wrapping the iFixit API.',
    long_description = description,
    install_requires = [
