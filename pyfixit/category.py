@@ -61,7 +61,7 @@ class Category(Base):
       # and an empty dict.
       flags = dict(attributes['flags']).values()
       self.flags = [Flag.from_id(flag['flagid']) for flag in flags]
-      self.image = Image(attributes['image']['id'])
+      self.image = Image(attributes['image']['id']) if attributes['image'] else None
       self.locale = attributes['locale']
       #self.parts = attributes['parts']
       #self.solutions = attributes['solutions']
