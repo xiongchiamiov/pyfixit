@@ -5,6 +5,7 @@ from datetime import datetime
 from base import Base
 from category import Category
 from constants import API_BASE_URL
+from flag import Flag
 from image import Image
 from step import Step
 from wikitext import WikiText
@@ -46,6 +47,8 @@ class Guide(Base):
                            difficult.
    :var iterable prerequisites: *(Lazy)* A collection of guides that must be
                                 completed prior to starting this guide.
+   :var iterable flags: *(Lazy)* A list of :class:`pyfixit.flag.Flag` objects,
+                        each containing an informational note about the guide.
    '''
    def __init__(self, guideid):
       self.id = guideid
@@ -87,7 +90,7 @@ class Guide(Base):
       self.prerequisites = [Guide(guide['guideid']) for guide in attributes['prerequisites']]
       #                     attributes['prereq_modified_date']
       #self.summary = attributes['summary']
-      #self.flags = attributes['flags']
+      self.flags = [Flag.from_id(flag['flagid']) for flag in attributes['flags']]
 
    @staticmethod
    def all(guideids=None, filter=None, order=None):

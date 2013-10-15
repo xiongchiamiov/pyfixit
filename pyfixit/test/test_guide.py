@@ -5,6 +5,7 @@ from unittest import TestCase
 from pyfixit import Guide
 from pyfixit import Image
 from pyfixit import Step
+from pyfixit import flag
 
 class GuideTest(TestCase):
    @classmethod
@@ -106,4 +107,17 @@ class GuideTest(TestCase):
       self.assertEqual(len(guides), len(self.wallstreet.prerequisites))
       for (g1, g2) in zip(guides, self.wallstreet.prerequisites):
          self.assertEqual(g1.id, g2.id)
+   
+   def test_flags(self):
+      # This guide should have multiple flags for a long time to come.
+      guide = Guide(6060)
+      flags = [
+         flag.GUIDE_GRAMMAR_ERRORS,
+         flag.GUIDE_LOUSY_PICTURES,
+         flag.GUIDE_USER_CONTRIBUTED,
+      ]
+      
+      self.assertEqual(len(flags), len(guide.flags))
+      for (f1, f2) in zip(flags, guide.flags):
+         self.assertEqual(f1, f2)
 

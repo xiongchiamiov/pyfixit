@@ -33,6 +33,14 @@ pyfixit Package
     :undoc-members:
     :show-inheritance:
 
+:mod:`flag` Module
+-----------------------
+
+.. automodule:: pyfixit.flag
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 :mod:`guide` Module
 -------------------
 
