@@ -3,6 +3,7 @@ import requests
 
 from base import Base
 from constants import API_BASE_URL
+from flag import Flag
 from image import Image
 from wikitext import WikiText
 # See also imports at the bottom of the file.
@@ -23,6 +24,9 @@ class Category(Base):
                          :class:`pyfixit.guide.Guide` objects under this
                          category.
    :var string description: *(Lazy)* A short description of the category.
+   :var iterable flags: *(Lazy)* A list of :class:`pyfixit.flag.Flag` objects,
+                        each containing an informational note about the
+                        category.
    :var Image image: *(Lazy)* The primary :class:`pyfixit.image.Image`
                      associated with the category.
    :var string locale: *(Lazy)* The locale of the text throughout the category.
@@ -48,10 +52,15 @@ class Category(Base):
       self.contents = WikiText(attributes['contents_raw'],
                                attributes['contents_rendered'])
       self.description = attributes['description']
-      #self.flags = attributes['flags']
       self.guides = []
       for guide in attributes['guides']:
          self.guides.append(Guide(guide['guideid']))
+      # Unlike guides, categories return flags as a dict, keyed by flagid.
+      # *Except* when it's empty, in which case we get an empty list due to
+      # PHP's json_encode() not knowing the difference between an empty array
+      # and an empty dict.
+      flags = dict(attributes['flags']).values()
+      self.flags = [Flag.from_id(flag['flagid']) for flag in flags]
       self.image = Image(attributes['image']['id'])
       self.locale = attributes['locale']
       #self.parts = attributes['parts']

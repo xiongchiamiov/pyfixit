@@ -4,6 +4,7 @@ from unittest import TestCase
 from pyfixit import Category
 from pyfixit import Guide
 from pyfixit import Image
+from pyfixit import flag
 
 class CategoryTest(TestCase):
    @classmethod
@@ -65,6 +66,20 @@ class CategoryTest(TestCase):
       for (c1, c2) in zip(guides, self.wallstreet.guides):
          self.assertEqual(c1.id, c2.id)
 
+   def test_flags(self):
+      # This category should have multiple flags for a long time to come.
+      category = Category('Epson_Stylus_C84')
+      flags = [
+         flag.WIKI_NO_AREA,
+         flag.WIKI_NO_IMAGE,
+         flag.WIKI_NO_SUMMARY,
+         flag.WIKI_STUB,
+      ]
+      
+      self.assertEqual(len(flags), len(category.flags))
+      for (f1, f2) in zip(sorted(flags), sorted(category.flags)):
+         self.assertEqual(f1, f2)
+   
    def test_image(self):
       self.assertEqual(Image(10301), self.wallstreet.image)
    
