@@ -32,6 +32,8 @@ class Guide(Base):
    :var datetime createdDate: *(Lazy)* When the guide was created (UTC).
    :var datetime publishedDate: *(Lazy)* When the guide was first made
                                 publicly-viewable (UTC).
+   :var string time_required_min: *(Lazy)* The minimum time required to complete the guide.
+   :var string time_required_max: *(Lazy)* The maximum time required to complete the guide.
    :var iterable steps: *(Lazy)* An ordered list of :class:`pyfixit.step.Step`
                         objects representing the steps to follow.
    :var string type: *(Lazy)* The sort of guide. Ex: ``installation``.
@@ -81,7 +83,14 @@ class Guide(Base):
       #self.documents = attributes['documents']
       author = attributes['author']
       #self.author = User(author['userid'], name=author['text'])
-      #self.timeRequired = attributes['timeRequired']
+      if (attributes['time_required_min']):
+         self.time_required_min = attributes['time_required_min']
+      else:
+         self.time_required_min = -1
+      if (attributes['time_required_max']):
+         self.time_required_max = attributes['time_required_max']
+      else:
+         self.time_required_max = -1
       self.steps = [Step(step['guideid'], step['stepid'], data=step) for step in attributes['steps']]
       self.type = attributes['type']
       self.public = attributes['public']
