@@ -47,6 +47,8 @@ class Guide(Base):
    :var string difficulty: *(Lazy)* An estimate of the difficulty of the guide.
                            Choices: Very easy, Easy, Moderate, Difficult, Very
                            difficult.
+   :var iterable tools: *(Lazy)* A list of the tools
+   :var iterable parts: *(Lazy)* A list of the parts
    :var iterable prerequisites: *(Lazy)* A collection of guides that must be
                                 completed prior to starting this guide.
    :var iterable flags: *(Lazy)* A list of :class:`pyfixit.flag.Flag` objects,
@@ -74,8 +76,8 @@ class Guide(Base):
                                    attributes['introduction_rendered'])
       self.conclusion = WikiText(attributes['conclusion_raw'],
                                  attributes['conclusion_rendered'])
-      #self.tools = attributes['tools']
-      #self.parts = attributes['parts']
+      self.tools = attributes['tools']
+      self.parts = attributes['parts']
       self.subject = attributes['subject']
       self.modifiedDate = datetime.utcfromtimestamp(attributes['modified_date'])
       self.createdDate = datetime.utcfromtimestamp(attributes['created_date'])
