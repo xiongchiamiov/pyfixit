@@ -65,7 +65,6 @@ class Guide(Base):
       
       self.category = Category(attributes['category'])
       self.url = attributes['url']
-      self.commentAttributes = requests.get('%s/comments/guide/%s' % (API_BASE_URL, self.id))
       
 
       self.title = attributes['title']
