@@ -77,7 +77,10 @@ class Guide(Base):
                                    attributes['introduction_rendered'])
       self.conclusion = WikiText(attributes['conclusion_raw'],
                                  attributes['conclusion_rendered'])
-      self.tools = attributes['tools']
+      if (attributes['tools']):
+         self.tools = attributes['tools']
+      else:
+         self.tools = None
       self.parts = attributes['parts']
       self.subject = attributes['subject']
       self.modifiedDate = datetime.utcfromtimestamp(attributes['modified_date'])
