@@ -32,6 +32,8 @@ class Guide(Base):
    :var datetime createdDate: *(Lazy)* When the guide was created (UTC).
    :var datetime publishedDate: *(Lazy)* When the guide was first made
                                 publicly-viewable (UTC).
+   :var string time_required_min: *(Lazy)* The minimum time required to complete the guide.
+   :var string time_required_max: *(Lazy)* The maximum time required to complete the guide.
    :var iterable steps: *(Lazy)* An ordered list of :class:`pyfixit.step.Step`
                         objects representing the steps to follow.
    :var string type: *(Lazy)* The sort of guide. Ex: ``installation``.
@@ -45,6 +47,8 @@ class Guide(Base):
    :var string difficulty: *(Lazy)* An estimate of the difficulty of the guide.
                            Choices: Very easy, Easy, Moderate, Difficult, Very
                            difficult.
+   :var iterable tools: *(Lazy)* A list of the tools
+   :var iterable parts: *(Lazy)* A list of the parts
    :var iterable prerequisites: *(Lazy)* A collection of guides that must be
                                 completed prior to starting this guide.
    :var iterable flags: *(Lazy)* A list of :class:`pyfixit.flag.Flag` objects,
@@ -62,6 +66,7 @@ class Guide(Base):
       self.category = Category(attributes['category'])
       self.url = attributes['url']
       
+
       self.title = attributes['title']
       if attributes['image']:
          self.image = Image(attributes['image']['id'])
@@ -72,8 +77,11 @@ class Guide(Base):
                                    attributes['introduction_rendered'])
       self.conclusion = WikiText(attributes['conclusion_raw'],
                                  attributes['conclusion_rendered'])
-      #self.tools = attributes['tools']
-      #self.parts = attributes['parts']
+      if (attributes['tools']):
+         self.tools = attributes['tools']
+      else:
+         self.tools = None
+      self.parts = attributes['parts']
       self.subject = attributes['subject']
       self.modifiedDate = datetime.utcfromtimestamp(attributes['modified_date'])
       self.createdDate = datetime.utcfromtimestamp(attributes['created_date'])
@@ -81,7 +89,14 @@ class Guide(Base):
       #self.documents = attributes['documents']
       author = attributes['author']
       #self.author = User(author['userid'], name=author['text'])
-      #self.timeRequired = attributes['timeRequired']
+      if (attributes['time_required_min']):
+         self.time_required_min = attributes['time_required_min']
+      else:
+         self.time_required_min = -1
+      if (attributes['time_required_max']):
+         self.time_required_max = attributes['time_required_max']
+      else:
+         self.time_required_max = -1
       self.steps = [Step(step['guideid'], step['stepid'], data=step) for step in attributes['steps']]
       self.type = attributes['type']
       self.public = attributes['public']
