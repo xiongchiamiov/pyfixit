@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 class Flag(object):
    """A way of identifying a common bit of information about a guide or wiki.

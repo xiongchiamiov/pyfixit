@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 class WikiText(object):
    """A bit of marked-up text.
    

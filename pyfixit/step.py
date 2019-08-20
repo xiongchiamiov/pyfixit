@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
+
 import requests
 
-from base import Base
-from constants import API_BASE_URL
-from image import Image
-from line import Line
+from .base import Base
+from .constants import API_BASE_URL
+from .image import Image
+from .line import Line
 
 class Step(Base):
    '''One step in a guide.

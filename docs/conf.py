@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 #
 # pyfixit documentation build configuration file, created by
 # sphinx-quickstart on Sat Aug 17 10:10:21 2013.

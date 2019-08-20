@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 '''Various constants for use throughout the project.
 '''
 

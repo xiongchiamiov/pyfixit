@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 from re import match
 from unittest import TestCase
 
