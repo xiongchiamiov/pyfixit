@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import os
+import setuptools
 from distutils.core import setup
 
-from .constants import VERSION
+from constants import VERSION
 
 # I really prefer Markdown to reStructuredText.  PyPi does not.  This allows me
 # to have things how I'd like, but not throw complaints when people are trying
@@ -10,7 +11,7 @@ from .constants import VERSION
 # right place.
 try:
    import pypandoc
-   description = pypandoc.convert('README.md', 'rst')
+   description = pypandoc.convert_file('pyfixit/README.md','rst')
 except (OSError, IOError, ImportError):
    description = ''
 
@@ -25,15 +26,16 @@ setup(
    author = 'James Pearson',
    author_email = 'pearson@changedmy.name',
    packages = ['pyfixit'],
-   url = 'https://github.com/xiongchiamiov/pyfixit',
+   url = 'https://github.com/Dynnammo/pyfixit',
    license = license,
    description = 'A Python library wrapping the iFixit API.',
    long_description = description,
-   install_requires = [
-      'requests >= 1.2.0, < 2.0',
-   ],
+   setup_requires=['wheel'],
+   # install_requires = [
+   #    'requests >= 1.2.0, < 2.0',
+   # ],
    # This doesn't actually work for me.  But it should:
    # https://nose.readthedocs.org/en/latest/setuptools_integration.html
-   test_suite = 'nose.collector',
+   # test_suite = 'nose.collector',
 )
 
