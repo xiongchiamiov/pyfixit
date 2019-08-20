@@ -1,7 +1,7 @@
 
 from unittest import TestCase
 
-from pyfixit import Line
+from pyfixit2 import Line
 
 class LineTest(TestCase):
    @classmethod

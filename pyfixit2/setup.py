@@ -21,11 +21,11 @@ except IOError:
    license = 'WTFPL 2.0'
 
 setup(
-   name = 'pyfixit',
+   name = 'pyfixit2',
    version = VERSION,
    author = 'James Pearson',
    author_email = 'pearson@changedmy.name',
-   packages = ['pyfixit'],
+   packages = ['pyfixit2'],
    url = 'https://github.com/Dynnammo/pyfixit',
    license = license,
    description = 'A Python library wrapping the iFixit API.',

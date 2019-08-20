@@ -2,10 +2,10 @@
 from datetime import datetime
 from unittest import TestCase
 
-from pyfixit import Guide
-from pyfixit import Image
-from pyfixit import Step
-from pyfixit import flag
+from pyfixit2 import Guide
+from pyfixit2 import Image
+from pyfixit2 import Step
+from pyfixit2 import flag
 
 class GuideTest(TestCase):
    @classmethod

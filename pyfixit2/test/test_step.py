@@ -2,9 +2,9 @@
 from re import match
 from unittest import TestCase
 
-from pyfixit import Image
-from pyfixit import Line
-from pyfixit import Step
+from pyfixit2 import Image
+from pyfixit2 import Line
+from pyfixit2 import Step
 
 class StepTest(TestCase):
    @classmethod

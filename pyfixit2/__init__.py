@@ -7,4 +7,4 @@ from .line import Line
 from .step import Step
 from .wikitext import WikiText
 
-name = "pyfixit"
+name = "pyfixit2"
