@@ -2,7 +2,7 @@
 import os
 from distutils.core import setup
 
-from pyfixit.constants import VERSION
+from .constants import VERSION
 
 # I really prefer Markdown to reStructuredText.  PyPi does not.  This allows me
 # to have things how I'd like, but not throw complaints when people are trying
