@@ -59,7 +59,7 @@ class Category(Base):
       # *Except* when it's empty, in which case we get an empty list due to
       # PHP's json_encode() not knowing the difference between an empty array
       # and an empty dict.
-      flags = dict(attributes['flags']).values()
+      flags = list(dict(attributes['flags']).values())
       self.flags = [Flag.from_id(flag['flagid']) for flag in flags]
       self.image = Image(attributes['image']['id']) if attributes['image'] else None
       self.locale = attributes['locale']
