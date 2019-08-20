@@ -11,7 +11,7 @@ from constants import VERSION
 # right place.
 try:
    import pypandoc
-   description = pypandoc.convert_file('pyfixit/README.md','rst')
+   description = pypandoc.convert_file('README.md','rst')
 except (OSError, IOError, ImportError):
    description = ''
 
