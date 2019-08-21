@@ -1,36 +1,21 @@
 #!/usr/bin/env python
 import os
-import setuptools
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 from constants import VERSION
-
-# I really prefer Markdown to reStructuredText.  PyPi does not.  This allows me
-# to have things how I'd like, but not throw complaints when people are trying
-# to install the package and they don't have pypandoc or the README in the
-# right place.
-try:
-   import pypandoc
-   description = pypandoc.convert_file('README.md','rst')
-except (OSError, IOError, ImportError):
-   description = ''
-
-try:
-   license = open('LICENSE').read()
-except IOError:
-   license = 'WTFPL 2.0'
 
 setup(
    name = 'pyfixit2',
    version = VERSION,
-   author = 'James Pearson',
-   author_email = 'pearson@changedmy.name',
-   packages = ['pyfixit2'],
+   author = 'Baptiste THIVEND',
+   author_email = 'baptiste.thivend@insa-lyon.fr',
    url = 'https://github.com/Dynnammo/pyfixit',
-   license = license,
    description = 'A Python library wrapping the iFixit API.',
-   long_description = description,
+   long_description = open('../README.md').read(),
+   long_description_content_type = "text/markdown",
    setup_requires=['wheel'],
+   packages = find_packages(),
+   license = "WTFPL 2.0",
    # install_requires = [
    #    'requests >= 1.2.0, < 2.0',
    # ],
