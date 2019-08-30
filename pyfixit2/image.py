@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
+
 import requests
 
-from base import Base
-from constants import API_BASE_URL
+from .base import Base
+from .constants import API_BASE_URL
 
 class Image(Base):
    '''An image that has been uploaded to the site.

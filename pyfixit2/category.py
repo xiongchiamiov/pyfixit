@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
+
 import requests
 
-from base import Base
-from constants import API_BASE_URL
-from flag import Flag
-from image import Image
-from wikitext import WikiText
+from .base import Base
+from .constants import API_BASE_URL
+from .flag import Flag
+from .image import Image
+from .wikitext import WikiText
 # See also imports at the bottom of the file.
 
 class Category(Base):
@@ -59,7 +59,7 @@ class Category(Base):
       # *Except* when it's empty, in which case we get an empty list due to
       # PHP's json_encode() not knowing the difference between an empty array
       # and an empty dict.
-      flags = dict(attributes['flags']).values()
+      flags = list(dict(attributes['flags']).values())
       self.flags = [Flag.from_id(flag['flagid']) for flag in flags]
       self.image = Image(attributes['image']['id']) if attributes['image'] else None
       self.locale = attributes['locale']
@@ -72,5 +72,5 @@ class Category(Base):
 # Circular imports don't work with 'from foo import bar' syntax,
 # http://stackoverflow.com/a/746067/120999
 # but if we move this import down below the class definition, all is good.
-from guide import Guide
+from .guide import Guide
 

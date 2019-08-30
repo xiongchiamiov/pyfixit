@@ -1,14 +1,14 @@
-# -*- coding: utf-8 -*-
+
 import requests
 from datetime import datetime
 
-from base import Base
-from category import Category
-from constants import API_BASE_URL
-from flag import Flag
-from image import Image
-from step import Step
-from wikitext import WikiText
+from .base import Base
+from .category import Category
+from .constants import API_BASE_URL
+from .flag import Flag
+from .image import Image
+from .step import Step
+from .wikitext import WikiText
 
 class Guide(Base):
    '''A series of instructions for performing a task.

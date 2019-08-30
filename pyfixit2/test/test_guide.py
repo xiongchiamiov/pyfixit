@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
+
 from datetime import datetime
 from unittest import TestCase
 
-from pyfixit import Guide
-from pyfixit import Image
-from pyfixit import Step
-from pyfixit import flag
+from pyfixit2 import Guide
+from pyfixit2 import Image
+from pyfixit2 import Step
+from pyfixit2 import flag
 
 class GuideTest(TestCase):
    @classmethod
@@ -54,12 +54,12 @@ class GuideTest(TestCase):
    
    def test_created_date(self):
       self.assertEqual(
-         datetime(2009, 06, 04, 06, 52, 12),
+         datetime(2009, 0o6, 0o4, 0o6, 52, 12),
          self.wallstreet.createdDate)
    
    def test_published_date(self):
       self.assertEqual(
-         datetime(2009, 06, 04, 06, 52, 12),
+         datetime(2009, 0o6, 0o4, 0o6, 52, 12),
          self.wallstreet.publishedDate)
    
    def test_steps(self):

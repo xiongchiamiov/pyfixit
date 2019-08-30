@@ -2,4 +2,4 @@ env
 *.egg-info
 MANIFEST
 dist
-
+**.pyc

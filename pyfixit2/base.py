@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 class Base(object):
    '''Base object defining common behavior for all API objects.
@@ -12,5 +12,5 @@ class Base(object):
          return self.__dict__[name]
       except KeyError:
          raise AttributeError("'%s' object has no attribute '%s'" % \
-                              (self.__class__.__name__, name))
+            (self.__class__.__name__, name))
 

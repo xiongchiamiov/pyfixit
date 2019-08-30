@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
+
 from re import match
 from unittest import TestCase
 
-from pyfixit import Image
-from pyfixit import Line
-from pyfixit import Step
+from pyfixit2 import Image
+from pyfixit2 import Line
+from pyfixit2 import Step
 
 class StepTest(TestCase):
    @classmethod
@@ -99,8 +99,8 @@ class StepTest(TestCase):
       # We test for deep equality in LineTest.
       self.assertEqual(len(lines), len(self.fetched.lines))
       self.assertEqual(len(lines), len(self.fed.lines))
-      for (l1, l2) in zip(lines, self.fetched.lines) \
-                    + zip(lines, self.fed.lines):
+      for (l1, l2) in list(zip(lines, self.fetched.lines)) \
+                    + list(zip(lines, self.fed.lines)):
          self.assertEqual(l1.guideid, l2.guideid)
          self.assertEqual(l1.stepid, l2.stepid)
          self.assertEqual(l1.lineid, l2.lineid)

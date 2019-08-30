@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
+
 import requests
 
-from base import Base
-from constants import API_BASE_URL
-from wikitext import WikiText
+from .base import Base
+from .constants import API_BASE_URL
+from .wikitext import WikiText
 
 class Line(Base):
    '''One line of text in a step.
