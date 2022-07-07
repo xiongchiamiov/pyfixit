@@ -30,7 +30,7 @@ setup(
    description = 'A Python library wrapping the iFixit API.',
    long_description = description,
    install_requires = [
-      'requests >= 1.2.0, < 2.0',
+      'requests >= 1.2.0, < 3.0',
    ],
    # This doesn't actually work for me.  But it should:
    # https://nose.readthedocs.org/en/latest/setuptools_integration.html
